@@ -36,11 +36,14 @@ while True:
 
 	elif opcao == "4":
 		remover_livro()
-
+	
 	elif opcao == "5":
-		emprestar_livro()
+		atualizar_livro()
 
 	elif opcao == "6":
+		emprestar_livro()
+
+	elif opcao == "7":
 		devolver_livro()
 
 	elif opcao == "0":

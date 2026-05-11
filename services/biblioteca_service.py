@@ -92,139 +92,139 @@ def emprestar_livro():
 	livro = selecionar_livro_por_id()
 
 	if livro.disponivel == 0:
-        	print("\nLivro já está emprestado.")
-        	return
+		print("\nLivro já está emprestado.")
+		return
 
-    	conexao = conectar()
-    	cursor = conexao.cursor()
+	conexao = conectar()
+	cursor = conexao.cursor()
 
-    	cursor.execute(
-        	"UPDATE livros SET disponivel = 0 WHERE id = ?",
-        	(livro.id,)
-    	)
+	cursor.execute(
+		"UPDATE livros SET disponivel = 0 WHERE id = ?",
+		(livro.id,)
+	)
 
-    	conexao.commit()
-    	conexao.close()
+	conexao.commit()
+	conexao.close()
 
-    	print("\nLivro emprestado com sucesso!")
+	print("\nLivro emprestado com sucesso!")
 
-def devolver_livro(id_livro):
+def devolver_livro():
 	livro = selecionar_livro_por_id()
 
 	if livro.disponivel == 1:
-        	print("\nLivro já está disponível.")
-        	return
+		print("\nLivro já está disponível.")
+		return
 
-    	conexao = conectar()
-    	cursor = conexao.cursor()
+	conexao = conectar()
+	cursor = conexao.cursor()
 
-    	cursor.execute(
-        	"UPDATE livros SET disponivel = 1 WHERE id = ?",
-        	(livro.id,)
-    	)
+	cursor.execute(
+		"UPDATE livros SET disponivel = 1 WHERE id = ?",
+		(livro.id,)
+	)
 
-    	conexao.commit()
-    	conexao.close()
+	conexao.commit()
+	conexao.close()
 
-    	print("\nLivro devolvido com sucesso!")
+	print("\nLivro devolvido com sucesso!")
 
 def selecionar_livro_por_id():
-    	while True:
-        	id_livro = int(input("\nDigite o ID do livro: "))
+	while True:
+		id_livro = int(input("\nDigite o ID do livro: "))
 
-        	livro = buscar_livro_por_id(id_livro)
+		livro = buscar_livro_por_id(id_livro)
 
-        	if not livro:
-            	print("\nLivro não encontrado.")
-            	continue
+		if not livro:
+			print("\nLivro não encontrado.")
+			continue
 
-        	print("\nLivro encontrado:\n")
-        	print(livro)
+		print("\nLivro encontrado:\n")
+		print(livro)
 
-        	confirmacao = input("\nConfirmar livro? (y/n): ").lower()
+		confirmacao = input("\nConfirmar livro? (y/n): ").lower()
 
-        	if confirmacao == "y":
-            	return livro
+		if confirmacao == "y":
+			return livro
 
-        	print("\nBuscando novamente...")
+		print("\nBuscando novamente...")
 
 def atualizar_livro():
-    	livro = selecionar_livro_por_id()
+	livro = selecionar_livro_por_id()
 
-    	while True:
-        	print("\n=== ATUALIZAR LIVRO ===")
-        	print("1 - Título")
-        	print("2 - Autor")
-        	print("3 - Ano")
-        	print("4 - Status de disponibilidade")
-        	print("0 - Finalizar")
+	while True:
+		print("\n=== ATUALIZAR LIVRO ===")
+		print("1 - Título")
+		print("2 - Autor")
+		print("3 - Ano")
+		print("4 - Status de disponibilidade")
+		print("0 - Finalizar")
 
-        	opcao = input("\nEscolha uma opção: ")
+		opcao = input("\nEscolha uma opção: ")
 
-        	conexao = conectar()
-        	cursor = conexao.cursor()
+		conexao = conectar()
+		cursor = conexao.cursor()
 
-        	if opcao == "1":
-            		novo_titulo = input("Novo título: ")
+		if opcao == "1":
+			novo_titulo = input("Novo título: ")
 
-            		cursor.execute("""
-            		UPDATE livros
-            		SET titulo = ?
-            		WHERE id = ?
-            		""", (novo_titulo, livro.id))
+			cursor.execute("""
+			UPDATE livros
+			SET titulo = ?
+			WHERE id = ?
+			""", (novo_titulo, livro.id))
 
-            		print("\nTítulo atualizado com sucesso!")
+			print("\nTítulo atualizado com sucesso!")
 
-        	elif opcao == "2":
-            		novo_autor = input("Novo autor: ")
+		elif opcao == "2":
+			novo_autor = input("Novo autor: ")
 
-            		cursor.execute("""
-            		UPDATE livros
-            		SET autor = ?
-            		WHERE id = ?
-            		""", (novo_autor, livro.id))
+			cursor.execute("""
+			UPDATE livros
+			SET autor = ?
+			WHERE id = ?
+			""", (novo_autor, livro.id))
 
-            		print("\nAutor atualizado com sucesso!")
+			print("\nAutor atualizado com sucesso!")
 
-        	elif opcao == "3":
-            		novo_ano = int(input("Novo ano: "))
+		elif opcao == "3":
+			novo_ano = int(input("Novo ano: "))
 
-            		cursor.execute("""
-            		UPDATE livros
-            		SET ano = ?
-            		WHERE id = ?
-            		""", (novo_ano, livro.id))
+			cursor.execute("""
+			UPDATE livros
+			SET ano = ?
+			WHERE id = ?
+			""", (novo_ano, livro.id))
 
-            		print("\nAno atualizado com sucesso!")
+			print("\nAno atualizado com sucesso!")
 
-        	elif opcao == "4":
-            		novo_status = int(input(
-                	"Digite 1 para disponível ou 0 para emprestado: "
-            	))
+		elif opcao == "4":
+			novo_status = int(input(
+			"Digite 1 para disponível ou 0 para emprestado: "
+		))
 
-            		cursor.execute("""
-            		UPDATE livros
-            		SET disponivel = ?
-            		WHERE id = ?
-            		""", (novo_status, livro.id))
+			cursor.execute("""
+			UPDATE livros
+			SET disponivel = ?
+			WHERE id = ?
+			""", (novo_status, livro.id))
 
-            		print("\nStatus atualizado com sucesso!")
+			print("\nStatus atualizado com sucesso!")
 
-        	elif opcao == "0":
-            		conexao.close()
-            		print("\nFinalizando atualização...")
-            		break
+		elif opcao == "0":
+			conexao.close()
+			print("\nFinalizando atualização...")
+			break
 
-        	else:
-            		print("\nOpção inválida.")
-            		conexao.close()
-            		continue
+		else:
+			print("\nOpção inválida.")
+			conexao.close()
+			continue
 
-        	conexao.commit()
+		conexao.commit()
 
 		livro_atualizado = buscar_livro_por_id(livro.id)
-
+		
 		print("\n=== LIVRO ATUALIZADO ===\n")
 		print(livro_atualizado)
 
-        	conexao.close()
+		conexao.close()
