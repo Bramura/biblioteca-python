@@ -38,11 +38,11 @@ Projeto de gerenciamento de biblioteca desenvolvido em Python com SQLite, utiliz
 ## 📂 Estrutura do projeto
 
 
-models/ → Entidades do sistema (Livro)
-services/ → Regras de negócio e acesso ao banco
-utils/ → Interface de menu
-database.py → Conexão e criação do banco
-main.py → Ponto de entrada do sistema
+- models/ → Entidades do sistema (Livro)
+- services/ → Regras de negócio e acesso ao banco
+- utils/ → Interface de menu
+- database.py → Conexão e criação do banco
+- main.py → Ponto de entrada do sistema
 
 ---
 
