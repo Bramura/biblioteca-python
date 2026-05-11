@@ -6,7 +6,8 @@ from services.biblioteca_service import (
 	buscar_livro_por_id,
 	remover_livro,
 	emprestar_livro,
-	devolver_livro
+	devolver_livro,
+	atualizar_livro
 )
 
 criar_tabela()
@@ -34,16 +35,13 @@ while True:
 			print("\nLivro não encontrado.")
 
 	elif opcao == "4":
-		id_livro = int(input("Digite o ID do livro: "))
-		remover_livro(id_livro)
+		remover_livro()
 
 	elif opcao == "5":
-		id_livro = int(input("Digite o ID do livro: "))
-		emprestar_livro(id_livro)
+		emprestar_livro()
 
 	elif opcao == "6":
-		id_livro = int(input("Digite o ID do livro: "))
-		devolver_livro(id_livro)
+		devolver_livro()
 
 	elif opcao == "0":
 		print("\nEncerrando sistema...")
