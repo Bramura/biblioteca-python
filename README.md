@@ -10,6 +10,7 @@ Projeto de gerenciamento de biblioteca desenvolvido em Python com SQLite, utiliz
 - Listagem de livros
 - Busca de livro por ID
 - Remoção de livros
+- Atualização de livro
 - Empréstimo de livros
 - Devolução de livros
 - Controle de disponibilidade
@@ -65,8 +66,9 @@ python main.py
 2 - Listar livros
 3 - Buscar livro por ID
 4 - Remover livro
-5 - Emprestar livro
-6 - Devolver livro
+5 - Atualizar livro
+6 - Emprestar livro
+7 - Devolver livro
 0 - Sair
 
 ---
